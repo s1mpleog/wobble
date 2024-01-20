@@ -13,39 +13,38 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-import { RegisterSchemas } from "@/schemas";
+import { LoginSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
-import { registerUser } from "@/server/actions/register";
 import FormError from "@/components/FormError";
 import { FormSuccess } from "@/components/FormSuccess";
+import { LoginUser } from "@/server/actions/login";
 
-export default function RegisterForm() {
+export default function LoginForm() {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
-  const form = useForm<z.infer<typeof RegisterSchemas>>({
+  const form = useForm<z.infer<typeof LoginSchema>>({
     mode: "onChange",
-    resolver: zodResolver(RegisterSchemas),
+    resolver: zodResolver(LoginSchema),
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     },
   });
   // const { isSubmitting, isValid } = form.formState;
-  const onSubmit = (values: z.infer<typeof RegisterSchemas>) => {
-    const validatedFields = RegisterSchemas.safeParse(values);
+  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    const validatedFields = LoginSchema.safeParse(values);
     if (!validatedFields.success) {
       return { error: "Invalid Fields" };
     }
     startTransition(() => {
-      registerUser(values).then((data) => {
+      LoginUser(values).then((data) => {
+        form.reset();
         setError(data?.error);
-        setSuccess(data?.success);
+        // setSuccess(data?.success);
       });
     });
-    form.reset();
   };
   return (
     <FlexCenterWrapper className="h-screen sm:-mt-24 -mt-16">
@@ -54,28 +53,6 @@ export default function RegisterForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-6 sm:w-[600px]"
         >
-          <FormField
-            control={form.control}
-            name="name"
-            disabled={isPending}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input
-                    disabled={isPending}
-                    {...field}
-                    type="text"
-                    placeholder="your name"
-                  />
-                </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <FormField
             disabled={isPending}
             control={form.control}
@@ -112,9 +89,7 @@ export default function RegisterForm() {
                     placeholder="your password"
                   />
                 </FormControl>
-                <FormDescription>
-                  Use letters and numbers and symbols and at least 6 characters.
-                </FormDescription>
+                <FormDescription>Use at least 6 characters.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -127,7 +102,7 @@ export default function RegisterForm() {
             className="w-full"
             size="lg"
           >
-            Register
+            Login
           </Button>
         </form>
       </Form>

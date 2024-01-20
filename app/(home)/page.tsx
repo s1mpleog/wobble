@@ -1,10 +1,11 @@
+import { auth } from "@/auth";
 import HomePage from "@/components/Hero/HomePage";
-import Navbar from "@/components/Navbar/Navbar";
 
 export default async function Home() {
+  const session = await auth();
+  console.log(session);
   return (
     <div>
-      {/* <Navbar /> */}
       <HomePage />
     </div>
   );

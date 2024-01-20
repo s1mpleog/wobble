@@ -3,9 +3,11 @@ import { ToggleTheme } from "@/components/Providers/ToggleTheme";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import WidthWrapper from "../WidthWrapper";
+import { auth } from "@/auth";
+import LogoutButton from "../LogoutButton";
 
-export default function Navbar() {
-  const session = false;
+export default async function Navbar() {
+  const session = await auth();
   return (
     <WidthWrapper className="flex items-center justify-between sm:max-w-7xl sm:mx-auto py-3 pb-4 border-b-[1px] border-muted">
       <div>
@@ -16,7 +18,7 @@ export default function Navbar() {
       <div className="flex items-center justify-center gap-2">
         <ToggleTheme />
         {session ? (
-          <Button>Log out</Button>
+          <LogoutButton />
         ) : (
           <Link href="/register">
             <Button>Register</Button>
