@@ -67,7 +67,7 @@ export default async function DesktopSidebar() {
           ))}
         </div>
       </div>
-      <div className="absolute sm:bottom-4 bottom-8">
+      <div className="absolute sm:bottom-4 bottom-10">
         <LogoutIcon />
       </div>
     </div>
