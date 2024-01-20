@@ -19,6 +19,7 @@ import { Input } from "../ui/input";
 import { registerUser } from "@/server/actions/register";
 import FormError from "@/components/FormError";
 import { FormSuccess } from "@/components/FormSuccess";
+import Link from "next/link";
 
 export default function RegisterForm() {
   const [isPending, startTransition] = useTransition();
@@ -129,6 +130,12 @@ export default function RegisterForm() {
           >
             Register
           </Button>
+          <Link
+            className="text-gray-600 flex items-center justify-center"
+            href="/login"
+          >
+            <Button size='sm' variant="link">Already have an account?</Button>
+          </Link>
         </form>
       </Form>
     </FlexCenterWrapper>

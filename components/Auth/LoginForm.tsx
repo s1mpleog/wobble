@@ -15,10 +15,11 @@ import {
 import { useForm } from "react-hook-form";
 import { LoginSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
 import FormError from "@/components/FormError";
 import { FormSuccess } from "@/components/FormSuccess";
 import { LoginUser } from "@/server/actions/login";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [isPending, startTransition] = useTransition();
@@ -104,6 +105,12 @@ export default function LoginForm() {
           >
             Login
           </Button>
+          <Link
+            className="text-gray-600 flex items-center justify-center"
+            href="/register"
+          >
+            <Button size='sm' variant="link">Don&apos;t have an account?</Button>
+          </Link>
         </form>
       </Form>
     </FlexCenterWrapper>
