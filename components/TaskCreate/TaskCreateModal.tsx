@@ -64,7 +64,7 @@ export default function TaskCreateModal() {
     startTransition(() => {
       createTask(values).then((data) => {
         form.reset();
-        // router.refresh();
+        router.refresh();
         setModalOpen(false);
         setError(data?.error);
       });
