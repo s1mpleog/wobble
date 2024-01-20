@@ -2,11 +2,25 @@ import Logo from "@/components/Logo";
 import Image from "next/image";
 import Link from "next/link";
 import LogoutIcon from "./LogoutIcon";
-import { Plus } from "lucide-react"
+import TaskCreateModal from "@/components/TaskCreate/TaskCreateModal";
+import { db } from "@/lib/db";
+import { auth } from "@/auth";
+import { getUserByEmail } from "@/lib/get-user-by-email";
 
-export default function DesktopSidebar() {
+export default async function DesktopSidebar() {
+  const session = await auth();
+  if (!session) return null;
+  const user = await getUserByEmail(session?.user?.email!);
+  const tasks = await db?.notes?.findMany({
+    where: {
+      userId: user?.id,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
   return (
-    <div className="flex flex-col relative space-y-6 bg-gray-100 h-screen items-start sm:pl-10 justify-start w-full py-2">
+    <div className="flex flex-col relative space-y-6 dark:bg-[#1B1D21] bg-gray-100 h-screen items-start sm:pl-10 justify-start w-full py-2">
       <div>
         <Link className="flex items-center justify-center gap-1" href="/">
           <Logo className="w-[40px] h-[40px]" />
@@ -14,7 +28,7 @@ export default function DesktopSidebar() {
         </Link>
       </div>
       <div className="w-full">
-        <h3 className="text-sm font-bold text-textPrimary">MAIN MENU</h3>
+        <h3 className="text-xs font-bold text-textPrimary">MAIN MENU</h3>
         <div className="flex flex-col space-y-4 mt-5 items-start justify-center">
           <Link
             href="/dashboard/user"
@@ -42,8 +56,15 @@ export default function DesktopSidebar() {
           </Link>
         </div>
         <div className="flex text-textPrimary items-center mt-10 justify-between">
-            <p className="font-medium text-sm">project</p>
-            <Plus className='w-4 h-4 mr-5' />
+          <p className="font-medium text-sm">project</p>
+          <TaskCreateModal />
+        </div>
+        <div className="mt-6">
+          {tasks.map((task) => (
+            <Link className="" key={task.id} href={`/notes/${task.id}`}>
+              <p className="line-clamp-1 text-sm mt-4">{task?.title}</p>
+            </Link>
+          ))}
         </div>
       </div>
       <div className="absolute sm:bottom-4 bottom-8">

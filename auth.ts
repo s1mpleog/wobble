@@ -1,7 +1,7 @@
+import authConfig from "@/auth.config";
 import { db } from "@/lib/db";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
-import authConfig from "@/auth.config";
 
 export const {
   handlers: { GET, POST },
@@ -12,6 +12,21 @@ export const {
   pages: {
     signIn: "/register",
     signOut: "/login",
+  },
+  callbacks: {
+    // async jwt({ token, session }) {
+    //   if (token.sub && session.user) {
+    //     session.user.id = token.sub
+    //   }
+    //   console.log(session)
+    //   return token;
+    // },
+    // async session({ token, session }) {
+    //   if (token.sub && session.user) {
+    //     session.user.id = token.sub;
+    //   }
+    //   return token;
+    // },
   },
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },

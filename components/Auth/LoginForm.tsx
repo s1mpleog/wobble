@@ -1,5 +1,6 @@
 "use client";
 import * as z from "zod";
+import Link from "next/link";
 import FlexCenterWrapper from "@/components/FlexCenterWrapper";
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
@@ -19,7 +20,6 @@ import { Input } from "@/components/ui/input";
 import FormError from "@/components/FormError";
 import { FormSuccess } from "@/components/FormSuccess";
 import { LoginUser } from "@/server/actions/login";
-import Link from "next/link";
 
 export default function LoginForm() {
   const [isPending, startTransition] = useTransition();

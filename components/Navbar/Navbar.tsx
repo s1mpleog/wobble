@@ -1,10 +1,10 @@
-import Logo from "../Logo";
-import { ToggleTheme } from "@/components/Providers/ToggleTheme";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import WidthWrapper from "../WidthWrapper";
 import { auth } from "@/auth";
+import { ToggleTheme } from "@/components/Providers/ToggleTheme";
+import Link from "next/link";
+import Logo from "../Logo";
 import LogoutButton from "../LogoutButton";
+import WidthWrapper from "../WidthWrapper";
+import { Button } from "../ui/button";
 
 export default async function Navbar() {
   const session = await auth();
@@ -22,9 +22,9 @@ export default async function Navbar() {
         ) : (
           <Link href="/register">
             <Button>Register</Button>
-          </Link> 
+          </Link>
         )}
       </div>
     </WidthWrapper>
-  ); 
+  );
 }

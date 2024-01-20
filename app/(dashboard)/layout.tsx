@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import DesktopNavbar from "@/components/Dashboard/Navbar/DesktopNavbar";
 import DesktopSidebar from "@/components/Dashboard/Sidebar/DesktopSidebar";
 import MobileSidebar from "@/components/Dashboard/Sidebar/MobileSidebar";
 
@@ -13,16 +14,19 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="min-h-screen">
-      <body className="flex">
+      <section className="flex gap-10">
         <aside className="w-[270px] sm:block hidden">
           <DesktopSidebar />
         </aside>
-        <aside className="block sm:hidden">
+        <aside className="block sm:hidden mt-3">
           <MobileSidebar />
         </aside>
+        <section className="flex flex-col w-full">
+        <nav className="w-full sm:block hidden">
+          <DesktopNavbar />
+        </nav>
         <main>{children}</main>
-      </body>
-    </html>
+        </section>
+      </section>
   );
 }

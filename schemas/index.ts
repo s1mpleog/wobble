@@ -20,3 +20,12 @@ export const LoginSchema = z.object({
     message: "Password should be at least 6 characters.",
   }),
 });
+
+export const taskCreateSchema = z.object({
+  title: z.string().min(1, {
+    message: "Title is required",
+  }),
+  description: z.string(),
+  imageUrl: z.string(),
+  category: z.string()
+});
