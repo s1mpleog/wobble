@@ -5,8 +5,8 @@ import DesktopSidebar from "@/components/Dashboard/Sidebar/DesktopSidebar";
 export default function MobileSidebar() {
   return (
     <Sheet>
-      <SheetTrigger>
-        <Menu />
+      <SheetTrigger className="relative">
+        <Menu className="absolute left-2" />
       </SheetTrigger>
       <SheetContent side="left" className="bg-gray-100">
         <DesktopSidebar />
