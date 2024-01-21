@@ -110,7 +110,7 @@ export default function TaskUpdateModal({ initialData }: TaskUpdateModal) {
                 {initialImage && (
                   <div className="flex items-center justify-center">
                     <Image
-                      className="object-cover rounded-md"
+                      className="object-cover rounded-md max-h-[100px]"
                       src={initialImage}
                       width={400}
                       height={100}
@@ -121,7 +121,7 @@ export default function TaskUpdateModal({ initialData }: TaskUpdateModal) {
                 {imagePreview && (
                   <div className="flex items-center justify-center">
                     <Image
-                      className="object-cover rounded-md"
+                      className="object-cover rounded-md max-h-[100px]"
                       src={imagePreview}
                       width={400}
                       height={100}
