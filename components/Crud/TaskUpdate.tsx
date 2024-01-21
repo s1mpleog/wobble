@@ -180,10 +180,10 @@ export default function TaskUpdateModal({ initialData }: TaskUpdateModal) {
                           placeholder="e.g.about coding"
                         />
                       </FormControl>
-                      <FormDescription>
+                      {/* <FormDescription>
                         Choose the category that best describes your task (e.g.,
                         Work, Personal, Study).
-                      </FormDescription>
+                      </FormDescription> */}
                       <FormMessage />
                     </FormItem>
                   )}
