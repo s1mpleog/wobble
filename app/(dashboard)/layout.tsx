@@ -14,7 +14,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-      <section className="flex sm:gap-20">
+      <section className="flex sm:gap-20 gap-2 sm:justify-normal justify-center sm:items-start items-start">
         <aside className="w-[270px] sm:block hidden">
           <DesktopSidebar />
         </aside>

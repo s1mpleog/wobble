@@ -1,4 +1,5 @@
 import { Notes } from "@prisma/client";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -10,7 +11,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { relativeDate } from "@/lib/utils";
-import Link from "next/link";
 interface ShowWobblesProps {
   tasks: Notes;
 }

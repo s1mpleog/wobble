@@ -1,7 +1,7 @@
+import Link from "next/link";
 import Logo from "@/components/Logo";
 import { ToggleTheme } from "@/components/Providers/ToggleTheme";
 import WidthWrapper from "@/components/WidthWrapper";
-import Link from "next/link";
 
 export default function WobbleNavbar() {
   return (
