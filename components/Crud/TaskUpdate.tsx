@@ -217,7 +217,7 @@ export default function TaskUpdateModal({ initialData }: TaskUpdateModal) {
                   size="lg"
                   type="submit"
                 >
-                  Create
+                  Update Note
                 </Button>
               </form>
             </Form>
