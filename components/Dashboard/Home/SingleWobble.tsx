@@ -10,11 +10,11 @@ interface SingleWobbleProps {
 export default function SingleWobble({ wobble }: SingleWobbleProps) {
   return (
     <main className="relative w-full overflow-x-hidden flex flex-col">
-      {wobble.imageUrl && (
+      {wobble.imageUrl !== "" && (
         <div className="absolute top-0">
           <Image
             className="min-w-full object-center object-cover h-[500px]"
-            src={wobble.imageUrl}
+            src={wobble.imageUrl || ""}
             alt={wobble.title}
             width={1980}
             height={500}
@@ -22,7 +22,9 @@ export default function SingleWobble({ wobble }: SingleWobbleProps) {
           />
         </div>
       )}
-      <div className="mt-[520px] text-center sm:mx-0 mx-3">
+      <div
+        className={wobble.imageUrl ? "mt-[520px] text-center sm:mx-0 mx-3" : "text-center mt-20"}
+      >
         <h1 className="lg:text-6xl md:text-4xl text-3xl font-bold sm:max-w-[70%] sm:mx-auto">
           {wobble.title}
         </h1>

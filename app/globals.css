@@ -55,6 +55,12 @@ body,
   }
 }
 
+/* Tailwind CSS */
+.hide-if-null {
+  display: none;
+}
+
+
 @layer base {
   * {
     @apply border-border;

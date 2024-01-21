@@ -20,7 +20,7 @@ export default async function DesktopSidebar() {
     },
   });
   return (
-    <div className="flex flex-col relative space-y-6 dark:bg-[#1B1D21] bg-gray-100 h-screen items-start sm:pl-10 justify-start w-full py-2">
+    <div className="flex fixed top-0 flex-col  space-y-6 dark:bg-[#1B1D21] bg-gray-100 h-screen items-start sm:pl-10 justify-start w-[270px] py-2">
       <div>
         <Link className="flex items-center justify-center gap-1" href="/">
           <Logo className="w-[40px] h-[40px]" />
