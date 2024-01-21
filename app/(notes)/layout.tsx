@@ -14,9 +14,6 @@ export default function NotesLayout({
       disableTransitionOnChange
     >
       <main className="">
-        <nav>
-          <WobbleNavbar />
-        </nav>
         {children}
       </main>
     </ThemeProvider>

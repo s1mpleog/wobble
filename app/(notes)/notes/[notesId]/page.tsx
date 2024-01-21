@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import SingleWobble from "@/components/Dashboard/Home/SingleWobble";
+import WobbleNavbar from "@/components/Dashboard/Home/WobbleNavbar";
 import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
 
@@ -20,6 +21,9 @@ export default async function NotesPage({
   });
   return (
     <div className="overflow-x-hidden">
+      <nav>
+        <WobbleNavbar wobble={singleWobble!} />
+      </nav>
       <SingleWobble wobble={singleWobble!} />
     </div>
   );

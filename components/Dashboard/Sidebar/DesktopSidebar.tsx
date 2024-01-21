@@ -2,7 +2,7 @@ import Logo from "@/components/Logo";
 import Image from "next/image";
 import Link from "next/link";
 import LogoutIcon from "./LogoutIcon";
-import TaskCreateModal from "@/components/TaskCreate/TaskCreateModal";
+import TaskCreateModal from "@/components/Crud/TaskCreateModal";
 import { db } from "@/lib/db";
 import { auth } from "@/auth";
 import { getUserByEmail } from "@/lib/get-user-by-email";
