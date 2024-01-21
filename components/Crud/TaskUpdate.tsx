@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/form";
 import { taskCreateSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Plus, PlusIcon } from "lucide-react";
+import { Plus, PlusIcon, NotebookPen } from "lucide-react";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -27,7 +27,6 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { createTask } from "@/server/actions/task-create";
 import FormError from "../FormError";
 import { useRouter } from "next/navigation";
 import { Notes } from "@prisma/client";
@@ -87,7 +86,7 @@ export default function TaskUpdateModal({ initialData }: TaskUpdateModal) {
   return (
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
       <DialogTrigger className="cursor-pointer" asChild>
-        <Plus className="w-5 h-5 mr-5" />
+        <NotebookPen className="w-5 h-5 mr-5" />
       </DialogTrigger>
       <DialogContent className="sm:min-w-[600px]">
         <DialogHeader>
